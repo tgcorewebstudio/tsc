@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Staff Dashboard | Tropical Smoothie Cafe Tempe</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: #F4EEE6; }
+    .admin-head { background: var(--cream-hi); border-bottom: 2px solid var(--forest); }
+    .admin-head .nav { min-height: 68px; }
+    .admin-head h1 { font-family: var(--font-display); font-weight: 400; font-size: 1.4rem; text-transform: uppercase; margin-left: 8px; }
+    .admin-main { padding: 28px 0 64px; }
+    .login { max-width: 420px; margin: 72px auto; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .stat { background: var(--cream-hi); border: 2px solid var(--forest); border-radius: var(--r-lg); padding: 16px 18px; }
+    .stat p:first-child { font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+    .stat p:last-child { font-family: var(--font-display); font-size: 2.2rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .tabs { display: flex; gap: 8px; margin: 28px 0 16px; flex-wrap: wrap; }
+    .tab { min-height: 44px; padding: 0 18px; border-radius: var(--r-full); border: 2px solid var(--forest); background: transparent; font-weight: 800; text-transform: uppercase; font-size: .85rem; color: var(--forest); }
+    .tab[aria-selected="true"] { background: var(--orange); }
+    .tab .n { display: inline-block; min-width: 22px; margin-left: 6px; padding: 0 6px; border-radius: var(--r-full); background: var(--forest); color: var(--cream); font-size: .75rem; }
+    .list { display: grid; gap: 12px; }
+    .row { background: var(--cream-hi); border: 2px solid rgba(20,54,31,.2); border-radius: var(--r-lg); padding: 16px 18px; display: grid; grid-template-columns: 1fr auto; gap: 10px 20px; }
+    .row.is-new { border-color: var(--orange); box-shadow: 0 4px 0 var(--orange); }
+    .row h3 { font-size: 1.05rem; font-weight: 800; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .row .meta { color: var(--text-muted); font-size: .9rem; }
+    .row ul { margin: 6px 0 0; padding-left: 18px; }
+    .row .msg { white-space: pre-wrap; margin-top: 6px; }
+    .status { padding: 2px 10px; border-radius: var(--r-full); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; background: var(--green-soft); color: var(--green-ink); }
+    .status.s-new { background: var(--orange-soft); color: var(--orange-ink); }
+    .status.s-cancelled, .status.s-no-show { background: #FDECEA; color: var(--danger); }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; justify-content: flex-end; }
+    .actions .btn { min-height: 40px; padding: 6px 14px; font-size: .78rem; }
+    .empty { padding: 32px; text-align: center; color: var(--text-muted); background: var(--cream-hi); border-radius: var(--r-lg); border: 2px dashed rgba(20,54,31,.25); }
+    .refresh-note { font-size: .82rem; color: var(--text-muted); }
+    @media (max-width: 760px) { .stats { grid-template-columns: 1fr 1fr; } .row { grid-template-columns: 1fr; } .actions { justify-content: flex-start; } }
+  </style>
+</head>
+<body>
+  <header class="admin-head">
+    <div class="nav container">
+      <a class="logo" href="/"><img src="assets/logo.png" alt="Tropical Smoothie Cafe" width="140" height="42"></a>
+      <h1>Staff dashboard</h1>
+      <button class="btn btn-outline" type="button" id="logout" hidden style="margin-left:auto">Log out</button>
+    </div>
+  </header>
+
+  <main class="admin-main container">
+    <section class="login panel" id="login" aria-labelledby="login-title">
+      <h2 class="section-title small" id="login-title" style="text-align:left">Staff log in</h2>
+      <form class="form" id="login-form" style="margin-top:16px" novalidate>
+        <div class="form-error" role="alert" data-form-error hidden></div>
+        <div class="field">
+          <label for="key">Dashboard key</label>
+          <input id="key" name="key" type="password" autocomplete="current-password" required>
+          <p class="hint">Find it in <code>data/admin_key.txt</code> on the server, or set <code>ADMIN_KEY</code>.</p>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Log in</button>
+      </form>
+    </section>
+
+    <section id="dash" hidden aria-label="Dashboard">
+      <div class="stats" aria-live="polite">
+        <div class="stat"><p>Active orders</p><p data-stat="new_orders">0</p></div>
+        <div class="stat"><p>Sales today</p><p data-stat="today_sales">$0</p></div>
+        <div class="stat"><p>Tables today</p><p data-stat="today_reservations">0</p></div>
+        <div class="stat"><p>New messages</p><p data-stat="new_messages">0</p></div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="panel" data-tab="orders">Orders</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="panel" data-tab="reservations">Reservations</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="panel" data-tab="messages">Messages</button>
+      </div>
+      <p class="refresh-note">Updates automatically every 15 seconds. <span data-updated></span></p>
+      <div class="list" id="panel" role="tabpanel" style="margin-top:12px"></div>
+    </section>
+  </main>
+  <script src="admin.js" defer></script>
+</body>
+</html>

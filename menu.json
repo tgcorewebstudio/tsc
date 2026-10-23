@@ -1,0 +1,69 @@
+{
+  "_note": "SAMPLE PRICES — replace every price with your cafe's real prices before going live.",
+  "tax_rate": 0.081,
+  "prep_minutes": 15,
+  "categories": [
+    {
+      "id": "smoothies",
+      "name": "Smoothies",
+      "icon": "cup",
+      "items": [
+        { "id": "island-green", "name": "Island Green®", "desc": "Spinach, kale, mango, pineapple & banana", "price": 7.49, "tag": "Classic", "cup": ["#D9FD97", "#7BD594", "#ED782F"] },
+        { "id": "sunrise-sunset", "name": "Sunrise Sunset™", "desc": "Strawberries, pineapple & mango", "price": 7.49, "tag": "Fan fave", "cup": ["#FFCD24", "#F64A4A", "#7BD594"] },
+        { "id": "bahama-mama", "name": "Bahama Mama™", "desc": "Strawberries, pineapple, white chocolate & coconut", "price": 7.49, "tag": "Fan fave", "cup": ["#FFE1C9", "#F64A4A", "#7BD594"] },
+        { "id": "acai-berry-boost", "name": "Acai Berry Boost™", "desc": "Açaí blended with mixed berries & banana", "price": 7.79, "tag": "Antioxidant", "cup": ["#C47AC0", "#6B1F5C", "#7BD594"] },
+        { "id": "peanut-paradise", "name": "Peanut Paradise™", "desc": "Peanut butter, banana & protein", "price": 7.99, "tag": "High protein", "cup": ["#F3D3A4", "#B5732F", "#ED782F"] }
+      ]
+    },
+    {
+      "id": "limited",
+      "name": "Limited Time",
+      "icon": "bolt",
+      "items": [
+        { "id": "fanta-phantom", "name": "Fanta® Phantom Smoothie", "desc": "Spooky-season sipper oozing with vanilla-flavored popping boba", "price": 7.99, "tag": "Limited", "cup": ["#7BD594", "#14361F", "#ED782F"] },
+        { "id": "salted-caramel-javablender", "name": "Salted Caramel Javablender", "desc": "Roasted cold-brew energy with 180 mg of caffeine", "price": 7.99, "tag": "Limited", "cup": ["#FFE1C9", "#AF6728", "#7BD594"] }
+      ]
+    },
+    {
+      "id": "bowls",
+      "name": "Tropic Bowls",
+      "icon": "bowl",
+      "items": [
+        { "id": "acai-bowl", "name": "Acai Bowl", "desc": "Açaí topped with fresh fruit & granola", "price": 9.99, "tag": "Breakfast" },
+        { "id": "pb-protein-crunch-bowl", "name": "PB Protein Crunch Bowl", "desc": "Peanut butter, banana & a protein-packed crunch", "price": 9.99, "tag": "High protein" },
+        { "id": "chia-oatmeal-bowl", "name": "Chia Oatmeal Bowl", "desc": "Hearty oats & chia with fresh fruit", "price": 6.49, "tag": "Breakfast" }
+      ]
+    },
+    {
+      "id": "wraps",
+      "name": "Wraps",
+      "icon": "wrap",
+      "items": [
+        { "id": "buffalo-chicken-wrap", "name": "Buffalo Chicken Wrap", "desc": "A guest favorite with a kick", "price": 10.49, "tag": "Fan fave" },
+        { "id": "thai-chicken-wrap", "name": "Thai Chicken Wrap", "desc": "Sweet, savory and a little spicy", "price": 10.49, "tag": "Lunch" },
+        { "id": "all-american-wrap", "name": "All American Wrap", "desc": "High-protein breakfast wrap, served all day", "price": 7.99, "tag": "Breakfast" }
+      ]
+    },
+    {
+      "id": "flatbreads",
+      "name": "Flatbreads",
+      "icon": "flat",
+      "items": [
+        { "id": "chipotle-chicken-club", "name": "Chipotle Chicken Club", "desc": "Smoky chipotle and a toasty flatbread", "price": 10.49, "tag": "Fan fave" },
+        { "id": "chicken-pesto-flatbread", "name": "Chicken Pesto Flatbread", "desc": "Herby pesto and grilled chicken", "price": 10.49, "tag": "Lunch" },
+        { "id": "chicken-bacon-ranch", "name": "Chicken Bacon Ranch", "desc": "Chicken, bacon & ranch, toasted to order", "price": 10.12, "tag": "Lunch" },
+        { "id": "pb-banana-crunch-flatbread", "name": "PB Banana Crunch Flatbread", "desc": "Peanut butter, banana & crunch", "price": 6.99, "tag": "Breakfast" }
+      ]
+    },
+    {
+      "id": "snack-rolls",
+      "name": "Toasted Snack Rolls",
+      "icon": "roll",
+      "items": [
+        { "id": "hawaiian-heat", "name": "Hawaiian Heat", "desc": "Your smoothie's new sidekick — sweet and spicy", "price": 4.99, "tag": "New" },
+        { "id": "bacon-chipotle-chicken-roll", "name": "Bacon Chipotle Chicken", "desc": "Smoky, savory, snackable", "price": 4.99, "tag": "New" },
+        { "id": "turkey-bacon-honey-dijon", "name": "Turkey Bacon Honey Dijon", "desc": "Turkey, bacon & tangy honey dijon", "price": 4.99, "tag": "New" }
+      ]
+    }
+  ]
+}
